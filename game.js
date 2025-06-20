@@ -1,6 +1,8 @@
 let boxes = document.querySelectorAll('.box2');
 let btn = document.querySelector('.btn');
+let msgContainer = document.querySelector('.msg-container');
 let wmsg = document.querySelector("#msg");
+let newbtn = document.querySelector('.btn-new');
 let turnX = true;  // player x or player 0
 console.log(boxes)  // array of boxes
 
@@ -33,6 +35,35 @@ boxes.forEach((box) => {
 
 })
 
+btn.addEventListener("click",resetGame);  // Reset Button
+new btn.addEventListener("click",resetGame);  // Reset Button
+
+
+
+const resetGame =()=>{
+turnX = true;
+enableBoxes();
+msgContainer.classList.add("hide");   
+}
+
+const disableBoxes = () => {  // disabling the buttons after winner is decided
+    for(let box of boxes) {
+        box.disabled = true;
+    }
+}
+
+const enableBoxes = () => {  // enabling the buttons for new game or reset
+    for(let box of boxes) {
+        box.disabled = false;
+        box.innerText=" ";  // removing the values of box for reset 
+    }
+}
+const showWinner = (gameWinner)=>{
+wmsg.innertext=" `$Congrat !!! {gameWinner} is Winner`;
+    msgContainer.classList.remove("hide");
+    disableBoxes();
+}
+
 const checkWinner = () => {
     for (let wpattern of warr) {  // same element (X or Y) in all 3 positions and matches with the winning pattern
         console.log(wpattern)
@@ -46,10 +77,11 @@ const checkWinner = () => {
         if(pos1Val !="" && pos2Val !="" && pos3Val !=""){
                 // to check if no 0 or X is not there then no winner
             if(pos1Val === pos2Val && pos2Val === pos3Val){
-                console.log("Winner", pos1Val)
-                wmsg.innertext=" `${pos1Val}` is Winner";
+                console.log("Winner is", pos1Val)
+                showWinner(pos1Val)
             }
         }
     }
 
-}
+};
+
