@@ -59,7 +59,7 @@ const enableBoxes = () => {  // enabling the buttons for new game or reset
     }
 }
 const showWinner = (gameWinner)=>{
-wmsg.innertext=" `$Congrat !!! {gameWinner} is Winner`;
+wmsg.innertext= `$Congrat !!! {gameWinner} is Winner`;
     msgContainer.classList.remove("hide");
     disableBoxes();
 }
