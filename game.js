@@ -35,9 +35,19 @@ boxes.forEach((box) => {
 const checkWinner = () => {
     for (let wpattern of warr) {  // same element (X or Y) in all 3 positions and matches with the winning pattern
         console.log(wpattern)
-        console.log(wpattern[0],wpattern[1],wpattern[2]) // extraxting position from each winning array
+        console.log(wpattern[0],wpattern[1],wpattern[2]) // extraxting individual elements(index) from each winning array vertically ex: [0] --> all 0th element of array vertical position
         console.log(boxes[wpattern[0]].innerText,boxes[wpattern[1]].innerText,boxes[wpattern[2]].innerText) // innerText for each winning array box
 // if(wpattern[0]==="X" wpattern[1],wpattern[2])
+        let pos1Val = boxes[wpattern[0]].innerText;
+        let pos2Val = boxes[wpattern[1]].innerText;
+        let pos3Val = boxes[wpattern[2]].innerText;
+
+        if(pos1Val !="" && pos2Val !="" && pos3Val !=""){
+                // to check if no 0 or X is not there then no winner
+            if(pos1Val === pos2Val && pos2Val === pos3Val){
+                console.log("Winner", pos1Val)
+            }
+        }
     }
 
 }
