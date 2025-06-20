@@ -1,5 +1,6 @@
 let boxes = document.querySelectorAll('.box2');
 let btn = document.querySelector('.btn');
+let wmsg = document.querySelector("#msg");
 let turnX = true;  // player x or player 0
 console.log(boxes)  // array of boxes
 
@@ -46,6 +47,7 @@ const checkWinner = () => {
                 // to check if no 0 or X is not there then no winner
             if(pos1Val === pos2Val && pos2Val === pos3Val){
                 console.log("Winner", pos1Val)
+                wmsg.innertext=" `${pos1Val}` is Winner";
             }
         }
     }
